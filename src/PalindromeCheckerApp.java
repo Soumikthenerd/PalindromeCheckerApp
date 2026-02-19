@@ -2,23 +2,19 @@ import java.util.Scanner;
 
 public class PalindromeCheckerApp {
     public static void main (String[] args){
-        String input = "racecar"; // Example input
-        boolean isPalindrome = true;
+        String input = "racecar";
+        String reverse = "";
 
-        // Loop only till half of the string length as suggested by your hint
-        for (int i = 0; i < input.length() / 2; i++) {
-            // Compare character at index i with character at symmetric index from end
-            if (input.charAt(i) != input.charAt(input.length() - i - 1)) {
-                isPalindrome = false;
-                break; // Stop checking if a mismatch is found
-            }
+        // Iterate from the last character to the first as per the hint
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reverse = reverse + input.charAt(i);
         }
 
-        if (isPalindrome) {
+        // Check if the original string matches the reversed string
+        if (input.equalsIgnoreCase(reverse)) {
             System.out.println(input + " is a palindrome.");
         } else {
             System.out.println(input + " is not a palindrome.");
         }
-
     }
 }

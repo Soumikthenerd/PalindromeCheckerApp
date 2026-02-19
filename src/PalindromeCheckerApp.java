@@ -6,19 +6,30 @@ public class PalindromeCheckerApp {
 
         System.out.print("Enter text: ");
         String input = scanner.nextLine();
-        String reverse = "";
 
-        // Reverse logic based on your previous hint
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reverse = reverse + input.charAt(i);
+        // Convert to character array as per hint
+        char[] chars = input.toCharArray();
+
+        // Initialize pointers at both ends
+        int start = 0;
+        int end = chars.length - 1;
+
+        // Assume palindrome initially
+        boolean isPalindrome = true;
+
+        // Continue comparison until pointers cross
+        while (start < end) {
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break; // Mismatch found, not a palindrome
+            }
+            start++; // Move forward
+            end--;   // Move backward
         }
 
-        // Determine if it's a palindrome (true or false)
-        boolean isPalindrome = input.equalsIgnoreCase(reverse);
-
-        // Print exactly as shown in the image
-        System.out.println("Input text: " + input);
-        System.out.println("Is it a Palindrome? : " + isPalindrome);
+        // Final Output
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
 
         scanner.close();
     }
